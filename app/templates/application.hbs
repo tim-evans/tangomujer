@@ -1,19 +1,21 @@
-{{head-layout}}
-<header>
-  <nav>
-    {{#link-to 'index'}}
-      <img src="/assets/images/black-logo.png" alt="{{model.name}}" title="{{model.name}}">
-    {{/link-to}}
-  </nav>
-</header>
-<main>
-  {{outlet}}
-</main>
-<footer class='vcard'>
-  <span class='fn'>{{model.name}}</span>
-  {{#if model.email}}
-    <span class='email'>
-      <a href="mailto:{{model.email}}">{{model.email}}</a>
-    </span>
-  {{/if}}
-</footer>
+<div class="ember-view">
+  {{head-layout}}
+  <header>
+    <nav>
+      {{#link-to 'index'}}
+        <img src="/assets/images/black-logo.png" alt="{{model.name}}" title="{{model.name}}">
+      {{/link-to}}
+    </nav>
+  </header>
+  <main>
+    {{outlet}}
+  </main>
+  <footer class='vcard'>
+    <span class='fn'>{{model.name}}</span>
+    {{#if model.email}}
+      <span class='email'>
+        <a href="mailto:{{model.email}}">{{model.email}}</a>
+      </span>
+    {{/if}}
+  </footer>
+</div>

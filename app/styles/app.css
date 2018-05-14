@@ -19,6 +19,10 @@ header nav img {
 
 body {
   min-height: 100vh;
+  display: flex;
+}
+main {
+  flex: 1;
 }
 
 footer {
