@@ -2,7 +2,8 @@ import Service from '@ember/service';
 
 export default Service.extend({
   init() {
-    this._stripe = Stripe('pk_test_UOmGjx9IcR3PvaofCDWRAmyt');
+    // Get stripe token from group
+    this._stripe = Stripe();
   },
 
   elements() {

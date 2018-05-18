@@ -1,0 +1,17 @@
+<h2>Checkout</h2>
+{{#each cart.tickets as |ticket|}}
+  {{ticket.description}}
+  {{#each ticket.events as |event|}}
+    {{event.title}}
+  {{/each}}
+  {{ticket.cost}}
+  <button type='reset' onclick={{action removeTicket ticket}}>x</button>
+{{/each}}
+
+{{cart.total}}
+{{payment-card}}
+<footer>
+  <button type='submit' disabled={{not isComplete}} onclick={{action pay}}>
+    Pay
+  </button>
+</footer>

@@ -1,5 +1,6 @@
 <div class="ember-view">
   {{head-layout}}
+  {{title model.name prepend=true}}
   <header>
     <nav>
       {{#link-to 'index'}}
@@ -8,6 +9,9 @@
     </nav>
   </header>
   <main>
+    {{#if cart.length}}
+      {{check-out cart=cart pay=(route-action 'pay')}}
+    {{/if}}
     {{outlet}}
   </main>
   <footer class='vcard'>
