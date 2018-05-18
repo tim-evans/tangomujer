@@ -113,7 +113,9 @@ article figure.align-left {
 
 article figure.size-large {
   width: 100vw;
+  text-align: center;
 }
+
 
 article figure.size-small {
   max-width: calc(400px + 2rem);
