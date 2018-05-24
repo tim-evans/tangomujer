@@ -116,9 +116,9 @@ article figure.size-large {
   text-align: center;
 }
 
-
 article figure.size-small {
   max-width: calc(400px + 2rem);
+  margin: 0 auto;
 }
 
 article figure.size-large figcaption {

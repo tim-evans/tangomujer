@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import { computed, get } from '@ember/object';
+import { computed } from '@ember/object';
 
 const { attr, hasMany } = DS;
 
@@ -9,9 +9,8 @@ export default DS.Model.extend({
   slug: attr('string'),
   pinned: attr('boolean'),
   publishedAt: attr('date'),
-  writtenBy: hasMany('author'),
 
   mobiledoc: computed('body', function () {
-    return JSON.parse(get(this, 'body'));
+    return JSON.parse(this.body || '');
   })
 });
