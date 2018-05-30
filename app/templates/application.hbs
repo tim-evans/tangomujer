@@ -1,6 +1,8 @@
-<div class="ember-view">
-  {{head-layout}}
-  {{title model.name prepend=true}}
+{{head-layout}}
+{{title model.name prepend=true}}
+{{#if (equals currentRouteName 'index')}}
+  {{outlet}}
+{{else}}
   <header>
     <nav>
       {{#link-to 'index'}}
@@ -9,17 +11,19 @@
     </nav>
   </header>
   <main>
-    {{#if cart.length}}
-      {{check-out cart=cart pay=(route-action 'pay')}}
-    {{/if}}
     {{outlet}}
-  </main>
-  <footer class='vcard'>
-    <span class='fn'>{{model.name}}</span>
-    {{#if model.email}}
-      <span class='email'>
-        <a href="mailto:{{model.email}}">{{model.email}}</a>
-      </span>
+    {{#if cart.length}}
+      {{side-panel (component 'check-out' cart=cart group=model onpay=(route-action 'pay'))
+        ondismiss=(action cart.clear cart)}}
     {{/if}}
-  </footer>
-</div>
+  </main>
+{{/if}}
+<footer class='vcard'>
+  <span class='fn'>{{model.name}}</span>
+  {{#if model.email}}
+    <span class='email'>
+      <a href="mailto:{{model.email}}">{{model.email}}</a>
+    </span>
+  {{/if}}
+</footer>
+{{side-panel duration=300}}

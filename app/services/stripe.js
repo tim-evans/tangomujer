@@ -1,9 +1,9 @@
 import Service from '@ember/service';
 
 export default Service.extend({
-  init() {
-    // Get stripe token from group
-    this._stripe = Stripe();
+
+  configure(group) {
+    this._stripe = Stripe(group.stripePublishableKey);
   },
 
   elements() {
@@ -12,5 +12,9 @@ export default Service.extend({
 
   paymentRequest(...args) {
     return this._stripe.paymentRequest(...args);
+  },
+
+  createToken(element) {
+    return this._stripe.createToken(element);
   }
 });

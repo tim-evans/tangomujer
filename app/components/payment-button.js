@@ -9,17 +9,21 @@ export default Component.extend({
   stripe: service(),
 
   didInsertElement() {
-    let stripe = get(this, 'stripe');
-    let paymentRequest = stripe.paymentRequest(get(this, 'payment'));
+    this.payment.then((payment) => {
+      let stripe = this.stripe;
+      let paymentRequest = stripe.paymentRequest(payment);
+      let elements = stripe.elements();
+      let button = elements.create('paymentRequestButton', {
+        paymentRequest
+      });
 
-    paymentRequest.canMakePayment().then((result) => {
-      if (result) {
-        let elements = stripe.elements();
-        let button = elements.create('paymentRequestButton', paymentRequest);
-        button.mount('#' + get(this, 'elementId'));
-      } else {
-        get(this, 'element').style.display = 'none';
-      }
+      paymentRequest.canMakePayment().then((result) => {
+        if (result) {
+          button.mount('#' + this.elementId);
+        } else {
+          this.element.style.display = 'none';
+        }
+      });
     });
   }
 });

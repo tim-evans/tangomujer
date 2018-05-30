@@ -1,7 +1,13 @@
-<ol>
+<p>
   {{#each events as |event|}}
-    <li>
+    <div>
       {{event.title}}
-    </li>  
+      {{event.startsAt}}
+      {{event.endsAt}}
+      {{event.venue.location.name}}, {{event.venue.extendedAddress}}
+      {{#if event.mobiledoc}}
+        {{render-mobiledoc mobiledoc=event.mobiledoc tagName='' atomNames=(list 'line-break')}}
+      {{/if}}
+    </div>  
   {{/each}}
-</ol>
+</p>

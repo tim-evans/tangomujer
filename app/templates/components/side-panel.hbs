@@ -1,0 +1,19 @@
+{{#if component}}
+  {{to-elsewhere named=named
+    send=send}}
+{{else}}
+  {{#from-elsewhere name=named tagName="" as |dialog|}}
+    <div class="side-panel-container">
+      {{#animated-if dialog use=fadeIn duration=duration}}
+        <div class="background" onclick={{dialog.dismiss}}></div>
+      {{/animated-if}}
+      {{#animated-value dialog use=show duration=duration as |props|}}
+        {{#if props.component}}
+          <section class="{{props.className}} side-panel">
+            {{component props.component dismiss=props.dismiss}}
+          </section>
+        {{/if}}
+      {{/animated-value}}
+    </div>
+  {{/from-elsewhere}}
+{{/if}}

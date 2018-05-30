@@ -27,5 +27,9 @@ export default Service.extend({
 
   remove(ticket) {
     this.tickets.removeObject(ticket);
+  },
+
+  clear(cart) {
+    cart.tickets.clear();
   }
 });

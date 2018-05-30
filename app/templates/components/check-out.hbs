@@ -1,17 +1,42 @@
-<h2>Checkout</h2>
-{{#each cart.tickets as |ticket|}}
-  {{ticket.description}}
-  {{#each ticket.events as |event|}}
-    {{event.title}}
-  {{/each}}
-  {{ticket.cost}}
-  <button type='reset' onclick={{action removeTicket ticket}}>x</button>
-{{/each}}
+<form>
+  <h2>Checkout</h2>
+  <div class='body'>
+    {{#each cart.tickets as |ticket|}}
+      <div>
+        {{ticket.description}}
+        {{#each ticket.events as |event|}}
+          {{event.title}}
+        {{/each}}
+        {{ticket.cost}}
+        <button type='reset' onclick={{action removeTicket ticket}}>x</button>
+      </div>
+    {{/each}}
 
-{{cart.total}}
-{{payment-card}}
-<footer>
-  <button type='submit' disabled={{not isComplete}} onclick={{action pay}}>
-    Pay
-  </button>
-</footer>
+    {{cart.total}}
+    <fieldset>
+      <label for="full-name">
+        Name*
+      </label>
+      {{input autocomplete='name' value=name type='text' name='full_name' id='full-name'}}
+    </fieldset>
+    <fieldset>
+      <label for="email">
+        Email
+      </label>
+      {{input autocomplete='email' value=email type='email' name='email' id='email'}}
+    </fieldset>
+
+    <fieldset>
+      <label for="card-element">
+        Credit Card
+      </label>
+      {{payment-card id='card-element' onchange=(action (mut stripeElement)) onerror=(action (mut isComplete) false) oncomplete=(action (mut isComplete) true)}}
+    </fieldset>
+  </div>
+  <footer>
+    {{payment-button payment=payment}}
+    <button type='submit' disabled={{not isComplete}} onclick={{action pay (hash stripeElement=stripeElement email=email name=name tickets=cart.tickets)}}>
+      Pay
+    </button>
+  </footer>
+</form>
