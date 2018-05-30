@@ -10,7 +10,7 @@ export default Component.extend({
       this.payload.eventIds.map((id) => this.store.findRecord('event', id))
     ).then((events) => {
       if (this.isDestroyed) return;
-      this.set('events', events);
+      this.set('events', events.sortBy('startsAt'));
     });
   }
 });
