@@ -4,7 +4,14 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
+    origin: 'https://www-test.queertangocollective.org',
+    sri: {
+      enabled: true,
+      crossorigin: 'anonymous'
+    },
+    fingerprint: {
+      prepend: 'https://builds.queertangocollective.org/admin/'
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated
