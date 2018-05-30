@@ -1,23 +1,19 @@
 {{head-layout}}
 {{title model.name prepend=true}}
-{{#if (equals currentRouteName 'index')}}
+<header>
+  <nav>
+    {{#link-to 'index'}}
+      <img src="/assets/images/black-logo.png" alt="{{model.name}}" title="{{model.name}}">
+    {{/link-to}}
+  </nav>
+</header>
+<main>
   {{outlet}}
-{{else}}
-  <header>
-    <nav>
-      {{#link-to 'index'}}
-        <img src="/assets/images/black-logo.png" alt="{{model.name}}" title="{{model.name}}">
-      {{/link-to}}
-    </nav>
-  </header>
-  <main>
-    {{outlet}}
-    {{#if cart.length}}
-      {{side-panel (component 'check-out' cart=cart group=model onpay=(route-action 'pay'))
-        ondismiss=(action cart.clear cart)}}
-    {{/if}}
-  </main>
-{{/if}}
+  {{#if cart.length}}
+    {{side-panel (component 'check-out' cart=cart group=model onpay=(route-action 'pay'))
+      ondismiss=(action cart.clear cart)}}
+  {{/if}}
+</main>
 <footer class='vcard'>
   <span class='fn'>{{model.name}}</span>
   {{#if model.email}}

@@ -1,21 +1,5 @@
-<header class="{{illustrations.className}} index">
-  <nav>
-    {{#if illustrations.isDark}}
-      <img src="/assets/images/white-logo.png" alt="{{model.name}}" title="{{model.name}}">
-    {{else}}
-      <img src="/assets/images/black-logo.png" alt="{{model.name}}" title="{{model.name}}">
-    {{/if}}
-  </nav>
-  <div class="background"></div>
-  <div class="illustrations {{illustrations.className}}">
-    <div class="container">
-      <img src="{{illustrations.images.firstObject}}" class="first-couple"/>
-      <img src="{{illustrations.images.lastObject}}" class="last-couple"/>
-    </div>
-  </div>
-</header>
-<main>
+<article>
   {{#if model}}
     {{post-body mobiledoc=model.mobiledoc tagName='' cardNames=(list 'youtube' 'photo') atomNames=(list 'line-break')}}
   {{/if}}
-</main>
+</article>
