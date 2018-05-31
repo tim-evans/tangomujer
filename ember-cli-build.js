@@ -5,6 +5,10 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     origin: 'https://www-test.queertangocollective.org',
+    sourcemaps: {
+      enabled: true,
+      extensions: ['js']
+    },
     sri: {
       enabled: true,
       crossorigin: 'anonymous'
