@@ -2,10 +2,6 @@ import Component from '@ember/component';
 import { computed, get } from '@ember/object';
 
 export default Component.extend({
-  classNames: ['youtube'],
-
-  layout,
-
   videoId: computed('payload.url', {
     get() {
       let url = get(this, 'payload.url');
