@@ -95,8 +95,16 @@ article figure.size-large {
 }
 
 article figure.size-small {
-  max-width: calc(400px + 2rem);
+  max-width: 50%;
   margin: 0 auto;
+}
+
+@media (max-width: 500px) {
+  article figure.size-small {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 100%;
+  }
 }
 
 article figure.size-large figcaption {
