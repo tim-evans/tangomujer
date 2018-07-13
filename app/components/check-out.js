@@ -8,7 +8,9 @@ export default Component.extend({
     evt.preventDefault();
     this.cart.remove(ticket);
   },
-  pay(paymentInfo) {
+  pay(paymentInfo, evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
     return this.onpay(paymentInfo).then(() => {
       this.set('hasPaid', true);
     }, (error) => {

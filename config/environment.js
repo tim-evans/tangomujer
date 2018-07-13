@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: '@queertangocollective/org',
+    modulePrefix: 'tango-mujer',
     environment,
     rootURL: '/',
     locationType: 'auto',

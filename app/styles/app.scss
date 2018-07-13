@@ -1,21 +1,55 @@
 @import 'reset';
 
 html, body, input {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Lora', serif;
 }
 
-header:not(.index) {
-  position: relative;
-  max-width: 100vw;
-  overflow: hidden;
-  height: 120px;
+header {
+  background: #1d1d1d;
+  color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif;
+
+  nav {
+    padding: 0 1rem;
+    max-width: calc(800px + 2rem);
+    margin: 1rem auto;
+  }
+
+  a {
+    color: #e5a448;
+    text-decoration: none;
+
+    &.active, &.home {
+      color: #FFFFFF;
+    }
+
+    &:hover {
+      color: #FFFFFF;
+    }
+  }
+
+  .home {
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+
+  ul {
+    margin: 0.5rem 0 0;
+  }
+
+  li {
+    display: inline;
+  }
+
+  li + li {
+    margin-left: 0.5rem;
+  }
 }
-header nav img {
-  z-index: 2;
-  width: 200px;
-  position: absolute;
-  top: -15px;
-  left: -15px;
+
+a {
+  color: inherit;
 }
 
 body {
@@ -25,20 +59,47 @@ body {
 }
 main {
   flex: 1;
-  padding: 1em 0;
+  padding: 0 0 1rem;
 }
 
 footer {
+  font-family: 'Open Sans', sans-serif;
   font-size: 0.8em;
-  background: #EEE;
+  background: #1d1d1d;
+  color: #FFFFFF;
   padding: 1em;
 }
 
-h1, h2 {
-  font-weight: 800;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
 }
+
+h2, h3, h4 {
+  font-weight: 300;
+  line-height: 1.5em;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  text-align: center;
+  margin: 1rem auto;
+}
+
 h2 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  text-align: center;
+  border-bottom: 1px solid #CCC;
+}
+
+h3 {
   font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
 }
 
 strong {
@@ -50,15 +111,16 @@ em {
 
 article {
   font-size: 1rem;
-  line-height: 1.2rem;
+  line-height: 1.4rem;
 }
 
-article h1 {
-  position: relative;
-  max-width: calc(800px + 2rem);
-  margin: 1rem auto 2rem;
-  font-size: 2rem;
-  padding: 0 1rem;
+article {
+  h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    max-width: calc(800px + 2rem);
+    margin: 1rem auto;
+    padding: 1rem;
+  }
 }
 
 article p {
@@ -95,11 +157,15 @@ article figure.size-large {
 }
 
 article figure.size-small {
-  max-width: 50%;
+  max-width: 400px;
   margin: 0 auto;
+
+  &.align-left, &.align-right {
+    max-width: 50%;
+  }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 400px) {
   article figure.size-small {
     padding-left: 0;
     padding-right: 0;
@@ -108,6 +174,7 @@ article figure.size-small {
 }
 
 article figure.size-large figcaption {
+  font-family: 'Open Sans', sans-serif;
   max-width: calc(800px + 2rem);
   padding: 0 1rem;
   margin: 0 auto;
@@ -146,6 +213,27 @@ article button:before {
   border: 1px solid #010101;
   left: 3px;
   top: 3px;
+}
+
+article blockquote {
+  position: relative;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  width: calc(100% - 2px - 4rem);
+  position: relative;
+  max-width: calc(800px - 2rem);
+  margin: 2rem auto;
+  padding: 0 1rem 0 3rem;
+  font-style: italic;
+
+  &:before {
+    content: '“';
+    display: block;
+    position: absolute;
+    left: 1.75rem;
+    font-size: 2rem;
+    color: #CCCCCC;
+  }
 }
 
 header.black .background {

@@ -2,9 +2,14 @@
 {{title model.name prepend=true}}
 <header>
   <nav>
-    {{#link-to 'index'}}
-      <img src="/assets/images/black-logo.png" alt="{{model.name}}" title="{{model.name}}">
-    {{/link-to}}
+    {{#link-to 'index' class='home'}}{{model.name}}{{/link-to}}
+    <ul>
+      {{#each model.channels as |channel|}}
+        <li>
+          {{#link-to 'post' channel.slug}}{{channel.name}}{{/link-to}}
+        </li>
+      {{/each}}
+    </ul>
   </nav>
 </header>
 <main>
@@ -15,7 +20,7 @@
   {{/if}}
 </main>
 <footer class='vcard'>
-  <span class='fn'>{{model.name}}</span>
+  &copy; <span class='fn'>{{model.name}}</span>
   {{#if model.email}}
     <span class='email'>
       <a href="mailto:{{model.email}}">{{model.email}}</a>
