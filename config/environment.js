@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'tango-mujer',
+    modulePrefix: 'tangomujer',
     environment,
     rootURL: '/',
     locationType: 'auto',
