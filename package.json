@@ -1,5 +1,5 @@
 {
-  "name": "tango-mujer",
+  "name": "tangomujer",
   "version": "0.0.0",
   "private": true,
   "description": "Tango Mujer's website",
@@ -9,7 +9,7 @@
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "https://github.com/queertangocollective/tango-mujer/",
+  "repository": "https://github.com/tim-evans/tangomujer/",
   "scripts": {
     "build": "ember build",
     "lint:js": "eslint ./*.js app blueprints config lib server tests",
